@@ -2,14 +2,15 @@
 
 package com.addressbook.backend.model;
 
-import jakarta.persistence.*;
+import jakarta.persistence.*; //jpa annotations import krta h  iska use database mapping ke liye hota h
 
-@Entity
-@Table(name = "contacts")
+@Entity //Ye class database table hai.
+//Agar @Entity nahi lagate to Hibernate is class ko database me map nahi karega
+@Table(name = "contacts")  //Database table ka naam:
 public class Contact {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id //Ye primary key hoti hai
+    @GeneratedValue(strategy = GenerationType.IDENTITY) // @GeneratedValue ->Ye batata hai ki ID automatically generate hogi  IDENTITY-> MySQL auto increment karega.
     private Long id;
 
     private String firstName;
@@ -21,11 +22,14 @@ public class Contact {
     private String phoneNumber;
     private String email;
 
+
+    //Relationships
     @ManyToOne
-    @JoinColumn(name = "user_id")
+    //Many Contacts → One User...User ke multiple contacts ho sakte hain
+    @JoinColumn(name = "user_id")//Ye database me foreign key column banata hai.
     private User user;
 
-    public Contact(){}
+    public Contact(){} //Spring Boot aur Hibernate ko empty constructor chahiye hota hai. Agar ye nahi hoga to entity create nahi hogi.
 
     public Long getId() {
         return id;
