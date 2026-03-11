@@ -1,0 +1,65 @@
+### Address Book API Testing File
+
+
+### Get All Contacts
+GET http://localhost:8080/contacts
+Accept: application/json
+
+
+### Add New Contact
+POST http://localhost:8080/contacts
+Content-Type: application/json
+
+{
+  "firstName": "Rahul",
+  "lastName": "Sharma",
+  "address": "Street 12",
+  "city": "Delhi",
+  "state": "Delhi",
+  "zip": "110001",
+  "phoneNumber": "9876543210",
+  "email": "rahul@gmail.com"
+}
+
+
+### Add Another Contact
+POST http://localhost:8080/contacts
+Content-Type: application/json
+
+{
+  "firstName": "Amit",
+  "lastName": "Verma",
+  "address": "Sector 18",
+  "city": "Noida",
+  "state": "Uttar Pradesh",
+  "zip": "201301",
+  "phoneNumber": "9123456780",
+  "email": "amit@gmail.com"
+}
+
+
+### Get Contact By ID
+GET http://localhost:8080/contacts/1
+Accept: application/json
+
+
+### Update Contact
+PUT http://localhost:8080/contacts/1
+Content-Type: application/json
+
+{
+  "firstName": "Rahul",
+  "lastName": "Sharma",
+  "address": "Street 45",
+  "city": "Gurgaon",
+  "state": "Haryana",
+  "zip": "122001",
+  "phoneNumber": "9999999999",
+  "email": "rahul.sharma@gmail.com"
+}
+
+
+### Delete Contact
+DELETE http://localhost:8080/contacts/1
+Accept: application/json
+```

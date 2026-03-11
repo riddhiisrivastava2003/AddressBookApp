@@ -56,42 +56,6 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 
 import java.util.List;
 
-//@RestController
-//@RequestMapping("/contacts")
-//@CrossOrigin(origins = "http://localhost:5173")
-//public class ContactController {
-//
-//    private final ContactService service;
-//
-//    public ContactController(ContactService service) {
-//        this.service = service;
-//    }
-//
-//    @PostMapping
-//    public Contact addContact(@RequestBody Contact contact){
-//        return service.addContact(contact);
-//    }
-//
-//    @GetMapping
-//    public List<Contact> getContacts(){
-//        return service.getContacts();
-//    }
-//
-//    @DeleteMapping("/{id}")
-//    public String deleteContact(@PathVariable Long id){
-//        service.deleteContact(id);
-//        return "Contact Deleted";
-//    }
-//
-//    @PutMapping("/{id}")
-//    public Contact editContact(@PathVariable Long id,
-//                               @RequestBody Contact contact){
-//
-//        return service.editContact(id, contact);
-//    }
-//}
-
-
 
 @RestController
 @RequestMapping("/contacts")
