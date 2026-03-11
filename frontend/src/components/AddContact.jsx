@@ -56,7 +56,7 @@ function AddContact({ selectedContact, refreshContacts, clearSelection }) {
           <input
             id="firstName"
             name="firstName"
-            placeholder="Asha"
+            placeholder="First Name"
             value={contact.firstName}
             onChange={handleChange}
             required
@@ -67,7 +67,7 @@ function AddContact({ selectedContact, refreshContacts, clearSelection }) {
           <input
             id="lastName"
             name="lastName"
-            placeholder="Khan"
+            placeholder="Last Name"
             value={contact.lastName}
             onChange={handleChange}
             required
@@ -79,7 +79,7 @@ function AddContact({ selectedContact, refreshContacts, clearSelection }) {
             id="email"
             name="email"
             type="email"
-            placeholder="asha@company.com"
+            placeholder="name@company.com"
             value={contact.email}
             onChange={handleChange}
           />
@@ -89,7 +89,7 @@ function AddContact({ selectedContact, refreshContacts, clearSelection }) {
           <input
             id="phoneNumber"
             name="phoneNumber"
-            placeholder="+91 98765 43210"
+            placeholder="+91 12345 78900"
             value={contact.phoneNumber}
             onChange={handleChange}
           />
