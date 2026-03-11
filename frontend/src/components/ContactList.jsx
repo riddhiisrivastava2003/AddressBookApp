@@ -5,10 +5,22 @@ import AddContact from "./AddContact";
 function ContactList() {
   const [contacts, setContacts] = useState([]);
   const [selectedContact, setSelectedContact] = useState(null);
+  const [theme, setTheme] = useState(() => {
+    const saved = localStorage.getItem("theme");
+    if (saved) return saved;
+    return window.matchMedia("(prefers-color-scheme: dark)").matches
+      ? "dark"
+      : "light";
+  });
 
   useEffect(() => {
     loadContacts();
   }, []);
+
+  useEffect(() => {
+    document.documentElement.setAttribute("data-theme", theme);
+    localStorage.setItem("theme", theme);
+  }, [theme]);
 
   const loadContacts = async () => {
     const res = await getContacts();
@@ -38,6 +50,16 @@ function ContactList() {
               <span className="meta-label">Total contacts</span>
               <span className="meta-value">{contacts.length}</span>
             </div>
+            <button
+              className="theme-toggle"
+              type="button"
+              onClick={() =>
+                setTheme((prev) => (prev === "dark" ? "light" : "dark"))
+              }
+              aria-label="Toggle theme"
+            >
+              {theme === "dark" ? "Light mode" : "Dark mode"}
+            </button>
           </div>
         </header>
 
