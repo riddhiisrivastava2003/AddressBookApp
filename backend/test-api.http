@@ -11,14 +11,14 @@ POST http://localhost:8080/contacts
 Content-Type: application/json
 
 {
-  "firstName": "Rahul",
+  "firstName": "Rishita",
   "lastName": "Sharma",
-  "address": "Street 12",
-  "city": "Delhi",
-  "state": "Delhi",
-  "zip": "110001",
+  "address": "Street 15",
+  "city": "Up",
+  "state": "up",
+  "zip": "211006",
   "phoneNumber": "9876543210",
-  "email": "rahul@gmail.com"
+  "email": "rishita@gmail.com"
 }
 
 
@@ -27,14 +27,14 @@ POST http://localhost:8080/contacts
 Content-Type: application/json
 
 {
-  "firstName": "Amit",
+  "firstName": "Hardik",
   "lastName": "Verma",
-  "address": "Sector 18",
+  "address": "Sector 10",
   "city": "Noida",
   "state": "Uttar Pradesh",
   "zip": "201301",
   "phoneNumber": "9123456780",
-  "email": "amit@gmail.com"
+  "email": "hardik@gmail.com"
 }
 
 
@@ -48,14 +48,14 @@ PUT http://localhost:8080/contacts/1
 Content-Type: application/json
 
 {
-  "firstName": "Rahul",
+  "firstName": "Rishita",
   "lastName": "Sharma",
   "address": "Street 45",
   "city": "Gurgaon",
   "state": "Haryana",
   "zip": "122001",
   "phoneNumber": "9999999999",
-  "email": "rahul.sharma@gmail.com"
+  "email": "rishita.sharma@gmail.com"
 }
 
 

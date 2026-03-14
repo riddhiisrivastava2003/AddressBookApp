@@ -10,14 +10,14 @@ import org.springframework.web.bind.annotation.CrossOrigin; //Ye CORS (Cross Ori
 import java.util.List;
 
 
-@RestController //Controller JSON response return karega
+@RestController //Controller JSON response return karega // isme rest api controller h @Controller+@ResponseBody
 @RequestMapping("/contacts") //Ye base URL define karta hai   http://localhost:8080/contacts.
 @CrossOrigin(origins = "*")//Backend allow karega requests from frontend
 
 
 public class ContactController {//Ye class contacts related APIs handle karegi
 
-    @Autowired
+    @Autowired //@Autowired is used in Spring to automatically inject the required dependency (object) into a class
     private ContactService contactService;
     //Spring automatically ContactService ka object inject karta hai.
     //Controller → Service → Repository → Database

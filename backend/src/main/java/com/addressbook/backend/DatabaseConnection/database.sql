@@ -5,19 +5,18 @@ DROP DATABASE IF EXISTS addressbook;
 CREATE DATABASE addressbook;
 USE addressbook;
 
--- =========================
+
 -- USERS TABLE
--- =========================
 CREATE TABLE users (
                        id BIGINT AUTO_INCREMENT PRIMARY KEY,
                        username VARCHAR(50) UNIQUE NOT NULL,
                        email VARCHAR(100) UNIQUE NOT NULL,
-                       password VARCHAR(255) NOT NULL
-);
+                       password VARCHAR(255) NOT NULL);
 
--- =========================
+
+
 -- CONTACTS TABLE
--- =========================
+
 CREATE TABLE contacts (
                           id BIGINT AUTO_INCREMENT PRIMARY KEY,
                           first_name VARCHAR(50) NOT NULL,
@@ -33,15 +32,15 @@ CREATE TABLE contacts (
                           FOREIGN KEY (user_id) REFERENCES users(id) ON DELETE CASCADE
 );
 
--- =========================
+
 -- SAMPLE USER
--- =========================
+
 INSERT INTO users (username, email, password)
 VALUES ('riddhi', 'riddhi@gmail.com', '1234');
 
--- =========================
+
 -- SAMPLE CONTACTS
--- =========================
+
 INSERT INTO contacts
 (first_name, last_name, address, city, state, zip, phone, email, date_added, user_id)
 VALUES
@@ -49,9 +48,9 @@ VALUES
     ('Amit', 'Verma', 'Sector 18', 'Noida', 'Uttar Pradesh', '201301', '9123456789', 'amit@gmail.com', CURDATE(), 1),
     ('Priya', 'Singh', 'MG Road', 'Lucknow', 'Uttar Pradesh', '226001', '9988776655', 'priya@gmail.com', CURDATE(), 1);
 
--- =========================
+
 -- CHECK DATA
--- =========================
+
 SELECT * FROM users;
 SELECT * FROM contacts;
 
