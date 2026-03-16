@@ -1,9 +1,8 @@
-### Address Book API Testing File
-
 ### Get All Contacts
 
 GET http://localhost:8080/contacts
 Accept: application/json
+
 
 ### Add New Contact
 
@@ -18,8 +17,9 @@ Content-Type: application/json
   "state": "Uttar Pradesh",
   "zip": "211006",
   "phoneNumber": "9876543210",
-  "email": "[rishita@gmail.com](mailto:rishita@gmail.com)"
+  "email": "rishita@gmail.com"
 }
+
 
 ### Add Another Contact
 
@@ -34,8 +34,9 @@ Content-Type: application/json
   "state": "Uttar Pradesh",
   "zip": "201301",
   "phoneNumber": "9123456780",
-  "email": "[hardik@gmail.com](mailto:hardik@gmail.com)"
+  "email": "hardik@gmail.com"
 }
+
 
 ### Update Contact
 
@@ -50,50 +51,59 @@ Content-Type: application/json
   "state": "Haryana",
   "zip": "122001",
   "phoneNumber": "9999999999",
-  "email": "[rishita.sharma@gmail.com](mailto:rishita.sharma@gmail.com)"
+  "email": "rishita.sharma@gmail.com"
 }
+
 
 ### Delete Contact
 
 DELETE http://localhost:8080/contacts/1
 Accept: application/json
 
-### Search Contact By City (UC7)
+
+### Search Contact By City
 
 GET http://localhost:8080/contacts/city/Noida
 Accept: application/json
 
-### Search Contact By State (UC7)
 
-GET http://localhost:8080/contacts/state/Uttar Pradesh
+### Search Contact By State
+
+GET http://localhost:8080/contacts/state/Uttar%20Pradesh
 Accept: application/json
 
-### Count Contacts By City (UC9)
+
+### Count Contacts By City
 
 GET http://localhost:8080/contacts/count/city/Noida
 Accept: application/json
 
-### Count Contacts By State (UC9)
 
-GET http://localhost:8080/contacts/count/state/Uttar Pradesh
+### Count Contacts By State
+
+GET http://localhost:8080/contacts/count/state/Uttar%20Pradesh
 Accept: application/json
 
-### Sort Contacts By Name (UC10)
+
+### Sort Contacts By Name
 
 GET http://localhost:8080/contacts/sort/name
 Accept: application/json
 
-### Sort Contacts By City (UC11)
+
+### Sort Contacts By City
 
 GET http://localhost:8080/contacts/sort/city
 Accept: application/json
 
-### Sort Contacts By State (UC11)
+
+### Sort Contacts By State
 
 GET http://localhost:8080/contacts/sort/state
 Accept: application/json
 
-### Sort Contacts By Zip (UC11)
+
+### Sort Contacts By Zip
 
 GET http://localhost:8080/contacts/sort/zip
 Accept: application/json

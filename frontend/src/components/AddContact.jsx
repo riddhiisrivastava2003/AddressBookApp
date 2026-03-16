@@ -1,3 +1,207 @@
+﻿// import { useState, useEffect } from "react";
+// import { addContact, editContact } from "../services/contactService";
+
+// const STATE_OPTIONS = [
+//   { label: "Select state", value: "" },
+//   { label: "Andhra Pradesh", value: "Andhra Pradesh" },
+//   { label: "Delhi", value: "Delhi" },
+//   { label: "Gujarat", value: "Gujarat" },
+//   { label: "Karnataka", value: "Karnataka" },
+//   { label: "Maharashtra", value: "Maharashtra" },
+//   { label: "Rajasthan", value: "Rajasthan" },
+//   { label: "Tamil Nadu", value: "Tamil Nadu" },
+//   { label: "Telangana", value: "Telangana" },
+//   { label: "Uttar Pradesh", value: "Uttar Pradesh" },
+//   { label: "West Bengal", value: "West Bengal" }
+// ];
+
+// function AddContact({ selectedContact, refreshContacts, clearSelection, onClose }) {
+//   const initialState = {
+//     firstName: "",
+//     lastName: "",
+//     address: "",
+//     city: "",
+//     state: "",
+//     zip: "",
+//     phoneNumber: "",
+//     email: ""
+//   };
+
+//   const [contact, setContact] = useState(initialState);
+//   const isEditing = Boolean(contact.id);
+
+//   useEffect(() => {
+//     if (selectedContact) {
+//       setContact({ ...initialState, ...selectedContact });
+//     } else {
+//       setContact(initialState);
+//     }
+//   }, [selectedContact]);
+
+//   const handleChange = (e) => {
+//     const { name, value } = e.target;
+//     setContact({ ...contact, [name]: value });
+//   };
+
+//   const handleSubmit = async (e) => {
+//     e.preventDefault();
+//     const payload = {
+//       id: contact.id,
+//       firstName: contact.firstName,
+//       lastName: contact.lastName,
+//       address: contact.address,
+//       city: contact.city,
+//       state: contact.state,
+//       zip: contact.zip,
+//       phoneNumber: contact.phoneNumber,
+//       email: contact.email
+//     };
+//     if (payload.id) {
+//       await editContact(payload.id, payload);
+//     } else {
+//       await addContact(payload);
+//     }
+//     setContact(initialState);
+//     if (clearSelection) clearSelection();
+//     refreshContacts();
+//     if (onClose && !isEditing) onClose();
+//   };
+
+//   return (
+//     <div className="form-card">
+//       <div className="form-header">
+//         <div className="form-icon">👤</div>
+//         <h2>{isEditing ? "Edit Person" : "Add Person"}</h2>
+//       </div>
+
+//       <form onSubmit={handleSubmit} className="form-grid">
+//         <div className="field">
+//           <label htmlFor="firstName">First Name *</label>
+//           <input
+//             id="firstName"
+//             name="firstName"
+//             placeholder="Enter first name"
+//             value={contact.firstName}
+//             onChange={handleChange}
+//             required
+//           />
+//         </div>
+
+//         <div className="field">
+//           <label htmlFor="lastName">Last Name *</label>
+//           <input
+//             id="lastName"
+//             name="lastName"
+//             placeholder="Enter last name"
+//             value={contact.lastName}
+//             onChange={handleChange}
+//             required
+//           />
+//         </div>
+
+//         <div className="field full-width">
+//           <label htmlFor="email">Email</label>
+//           <input
+//             id="email"
+//             name="email"
+//             type="email"
+//             placeholder="Enter email"
+//             value={contact.email}
+//             onChange={handleChange}
+//           />
+//         </div>
+
+//         <div className="field full-width">
+//           <label htmlFor="address">Address *</label>
+//           <textarea
+//             id="address"
+//             name="address"
+//             placeholder="Enter address"
+//             value={contact.address}
+//             onChange={handleChange}
+//             required
+//             rows={3}
+//           />
+//         </div>
+
+//         <div className="field">
+//           <label htmlFor="city">City *</label>
+//           <input
+//             id="city"
+//             name="city"
+//             placeholder="Enter city"
+//             value={contact.city}
+//             onChange={handleChange}
+//             required
+//           />
+//         </div>
+
+//         <div className="field">
+//           <label htmlFor="state">State *</label>
+//           <select
+//             id="state"
+//             name="state"
+//             value={contact.state}
+//             onChange={handleChange}
+//             required
+//           >
+//             {STATE_OPTIONS.map((option) => (
+//               <option
+//                 key={option.label}
+//                 value={option.value}
+//                 disabled={option.value === ""}
+//               >
+//                 {option.label}
+//               </option>
+//             ))}
+//           </select>
+//         </div>
+
+//         <div className="field">
+//           <label htmlFor="zip">Zip Code *</label>
+//           <input
+//             id="zip"
+//             name="zip"
+//             placeholder="Enter zip code"
+//             value={contact.zip}
+//             onChange={handleChange}
+//             required
+//           />
+//         </div>
+
+//         <div className="field">
+//           <label htmlFor="phoneNumber">Phone Number *</label>
+//           <input
+//             id="phoneNumber"
+//             name="phoneNumber"
+//             placeholder="Enter phone number"
+//             value={contact.phoneNumber}
+//             onChange={handleChange}
+//             required
+//           />
+//         </div>
+
+//         <div className="form-actions full-width">
+//           <button
+//             type="button"
+//             className="btn btn-secondary"
+//             onClick={() => onClose && onClose()}
+//           >
+//             Cancel
+//           </button>
+//           <button className="btn btn-primary" type="submit">
+//             {isEditing ? "Update" : "Add"}
+//           </button>
+//         </div>
+//       </form>
+//     </div>
+//   );
+// }
+
+// export default AddContact;
+
+
+
 import { useState, useEffect } from "react";
 import { addContact, editContact } from "../services/contactService";
 
@@ -16,7 +220,9 @@ const STATE_OPTIONS = [
 ];
 
 function AddContact({ selectedContact, refreshContacts, clearSelection, onClose }) {
+
   const initialState = {
+    id: null,
     firstName: "",
     lastName: "",
     address: "",
@@ -28,11 +234,12 @@ function AddContact({ selectedContact, refreshContacts, clearSelection, onClose 
   };
 
   const [contact, setContact] = useState(initialState);
+
   const isEditing = Boolean(contact.id);
 
   useEffect(() => {
     if (selectedContact) {
-      setContact({ ...initialState, ...selectedContact });
+      setContact({ ...selectedContact });
     } else {
       setContact(initialState);
     }
@@ -40,13 +247,17 @@ function AddContact({ selectedContact, refreshContacts, clearSelection, onClose 
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    setContact({ ...contact, [name]: value });
+
+    setContact({
+      ...contact,
+      [name]: value
+    });
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+
     const payload = {
-      id: contact.id,
       firstName: contact.firstName,
       lastName: contact.lastName,
       address: contact.address,
@@ -56,29 +267,42 @@ function AddContact({ selectedContact, refreshContacts, clearSelection, onClose 
       phoneNumber: contact.phoneNumber,
       email: contact.email
     };
-    if (payload.id) {
-      await editContact(payload.id, payload);
-    } else {
-      await addContact(payload);
+
+    try {
+
+      if (isEditing) {
+        await editContact(contact.id, payload);
+      } else {
+        await addContact(payload);
+      }
+
+      setContact(initialState);
+
+      if (clearSelection) clearSelection();
+
+      refreshContacts();
+
+      if (onClose) onClose();
+
+    } catch (error) {
+      console.error("Error saving contact:", error);
+      alert("Something went wrong!");
     }
-    setContact(initialState);
-    if (clearSelection) clearSelection();
-    refreshContacts();
-    if (onClose && !isEditing) onClose();
   };
 
   return (
     <div className="form-card">
+
       <div className="form-header">
         <div className="form-icon">👤</div>
         <h2>{isEditing ? "Edit Person" : "Add Person"}</h2>
       </div>
 
       <form onSubmit={handleSubmit} className="form-grid">
+
         <div className="field">
-          <label htmlFor="firstName">First Name *</label>
+          <label>First Name *</label>
           <input
-            id="firstName"
             name="firstName"
             placeholder="Enter first name"
             value={contact.firstName}
@@ -88,9 +312,8 @@ function AddContact({ selectedContact, refreshContacts, clearSelection, onClose 
         </div>
 
         <div className="field">
-          <label htmlFor="lastName">Last Name *</label>
+          <label>Last Name *</label>
           <input
-            id="lastName"
             name="lastName"
             placeholder="Enter last name"
             value={contact.lastName}
@@ -100,11 +323,10 @@ function AddContact({ selectedContact, refreshContacts, clearSelection, onClose 
         </div>
 
         <div className="field full-width">
-          <label htmlFor="email">Email</label>
+          <label>Email</label>
           <input
-            id="email"
-            name="email"
             type="email"
+            name="email"
             placeholder="Enter email"
             value={contact.email}
             onChange={handleChange}
@@ -112,22 +334,20 @@ function AddContact({ selectedContact, refreshContacts, clearSelection, onClose 
         </div>
 
         <div className="field full-width">
-          <label htmlFor="address">Address *</label>
+          <label>Address *</label>
           <textarea
-            id="address"
             name="address"
             placeholder="Enter address"
             value={contact.address}
             onChange={handleChange}
-            required
             rows={3}
+            required
           />
         </div>
 
         <div className="field">
-          <label htmlFor="city">City *</label>
+          <label>City *</label>
           <input
-            id="city"
             name="city"
             placeholder="Enter city"
             value={contact.city}
@@ -137,9 +357,8 @@ function AddContact({ selectedContact, refreshContacts, clearSelection, onClose 
         </div>
 
         <div className="field">
-          <label htmlFor="state">State *</label>
+          <label>State *</label>
           <select
-            id="state"
             name="state"
             value={contact.state}
             onChange={handleChange}
@@ -147,7 +366,7 @@ function AddContact({ selectedContact, refreshContacts, clearSelection, onClose 
           >
             {STATE_OPTIONS.map((option) => (
               <option
-                key={option.label}
+                key={option.value}
                 value={option.value}
                 disabled={option.value === ""}
               >
@@ -158,42 +377,47 @@ function AddContact({ selectedContact, refreshContacts, clearSelection, onClose 
         </div>
 
         <div className="field">
-          <label htmlFor="zip">Zip Code *</label>
+          <label>Zip Code *</label>
           <input
-            id="zip"
             name="zip"
             placeholder="Enter zip code"
             value={contact.zip}
             onChange={handleChange}
+            pattern="[0-9]{6}"
             required
           />
         </div>
 
         <div className="field">
-          <label htmlFor="phoneNumber">Phone Number *</label>
+          <label>Phone Number *</label>
           <input
-            id="phoneNumber"
             name="phoneNumber"
             placeholder="Enter phone number"
             value={contact.phoneNumber}
             onChange={handleChange}
+            pattern="[0-9]{10}"
             required
           />
         </div>
 
         <div className="form-actions full-width">
+
           <button
             type="button"
             className="btn btn-secondary"
-            onClick={() => onClose && onClose()}
+            onClick={onClose}
           >
             Cancel
           </button>
+
           <button className="btn btn-primary" type="submit">
             {isEditing ? "Update" : "Add"}
           </button>
+
         </div>
+
       </form>
+
     </div>
   );
 }

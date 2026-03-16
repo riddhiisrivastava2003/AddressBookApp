@@ -10,14 +10,14 @@ public interface ContactRepository extends JpaRepository<Contact, Long> { //Cont
     //Contact	Entity class
     //Long	Primary key ka datatype
 
-    List<Contact> findByUserId(Long userId);
-
-    List<Contact> findByCity(String city);
-
-    List<Contact> findByState(String state);
-
-    long countByCity(String city);
-
-    long countByState(String state);
+//    List<Contact> findByUserId(Long userId);
+//
+//    List<Contact> findByCity(String city);
+//
+//    List<Contact> findByState(String state);
+//
+//    long countByCity(String city);
+//
+//    long countByState(String state);
 
 }
