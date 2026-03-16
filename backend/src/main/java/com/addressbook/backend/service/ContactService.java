@@ -30,6 +30,46 @@ public class ContactService {
         repository.deleteById(id);
     }
 
+    // UC7 Search by City
+    public List<Contact> searchByCity(String city) {
+        return repository.findByCity(city);
+    }
+
+    // UC7 Search by State
+    public List<Contact> searchByState(String state) {
+        return repository.findByState(state);
+    }
+
+    // UC9 Count by City
+    public long countByCity(String city) {
+        return repository.countByCity(city);
+    }
+
+    // UC9 Count by State
+    public long countByState(String state) {
+        return repository.countByState(state);
+    }
+
+    // UC10 Sort by Name
+    public List<Contact> sortByName() {
+        return repository.findAll(org.springframework.data.domain.Sort.by("firstName"));
+    }
+
+    // UC11 Sort by City
+    public List<Contact> sortByCity() {
+        return repository.findAll(org.springframework.data.domain.Sort.by("city"));
+    }
+
+    // UC11 Sort by State
+    public List<Contact> sortByState() {
+        return repository.findAll(org.springframework.data.domain.Sort.by("state"));
+    }
+
+    // UC11 Sort by Zip
+    public List<Contact> sortByZip() {
+        return repository.findAll(org.springframework.data.domain.Sort.by("zip"));
+    }
+
 
 
     public Contact editContact(Long id, Contact updatedContact) {

@@ -159,11 +159,21 @@ function ContactList() {
     }
   };
 
-  const filteredContacts = contacts.filter((c) =>
-    `${c.firstName} ${c.lastName}`
-      .toLowerCase()
-      .includes(search.toLowerCase())
+const filteredContacts = contacts.filter((c) => {
+  const keyword = search.toLowerCase();
+
+  return (
+    c.firstName?.toLowerCase().includes(keyword) ||
+    c.lastName?.toLowerCase().includes(keyword) ||
+    c.city?.toLowerCase().includes(keyword) ||
+    c.state?.toLowerCase().includes(keyword) ||
+    c.zip?.toLowerCase().includes(keyword) ||
+    c.phoneNumber?.toLowerCase().includes(keyword) ||
+    c.email?.toLowerCase().includes(keyword)
   );
+});
+
+
 
   return (
     <div className="app">

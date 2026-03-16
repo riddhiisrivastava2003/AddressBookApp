@@ -49,4 +49,52 @@ public class ContactController {//Ye class contacts related APIs handle karegi
     }
 
   //  Frontend->Controller->Service->Find Contact by ID->Update fields->Save to DB
+
+    // UC7 Search by City
+    @GetMapping("/city/{city}")
+    public List<Contact> searchByCity(@PathVariable String city) {
+        return contactService.searchByCity(city);
+    }
+
+    // UC7 Search by State
+    @GetMapping("/state/{state}")
+    public List<Contact> searchByState(@PathVariable String state) {
+        return contactService.searchByState(state);
+    }
+
+    // UC9 Count by City
+    @GetMapping("/count/city/{city}")
+    public long countByCity(@PathVariable String city) {
+        return contactService.countByCity(city);
+    }
+
+    // UC9 Count by State
+    @GetMapping("/count/state/{state}")
+    public long countByState(@PathVariable String state) {
+        return contactService.countByState(state);
+    }
+
+    // UC10 Sort by Name
+    @GetMapping("/sort/name")
+    public List<Contact> sortByName() {
+        return contactService.sortByName();
+    }
+
+    // UC11 Sort by City
+    @GetMapping("/sort/city")
+    public List<Contact> sortByCity() {
+        return contactService.sortByCity();
+    }
+
+    // UC11 Sort by State
+    @GetMapping("/sort/state")
+    public List<Contact> sortByState() {
+        return contactService.sortByState();
+    }
+
+    // UC11 Sort by Zip
+    @GetMapping("/sort/zip")
+    public List<Contact> sortByZip() {
+        return contactService.sortByZip();
+    }
 }

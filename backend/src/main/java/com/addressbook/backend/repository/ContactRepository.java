@@ -12,4 +12,12 @@ public interface ContactRepository extends JpaRepository<Contact, Long> { //Cont
 
     List<Contact> findByUserId(Long userId);
 
+    List<Contact> findByCity(String city);
+
+    List<Contact> findByState(String state);
+
+    long countByCity(String city);
+
+    long countByState(String state);
+
 }

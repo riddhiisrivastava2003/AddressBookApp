@@ -1,12 +1,12 @@
 ### Address Book API Testing File
 
-
 ### Get All Contacts
+
 GET http://localhost:8080/contacts
 Accept: application/json
 
-
 ### Add New Contact
+
 POST http://localhost:8080/contacts
 Content-Type: application/json
 
@@ -14,15 +14,15 @@ Content-Type: application/json
   "firstName": "Rishita",
   "lastName": "Sharma",
   "address": "Street 15",
-  "city": "Up",
-  "state": "up",
+  "city": "Allahabad",
+  "state": "Uttar Pradesh",
   "zip": "211006",
   "phoneNumber": "9876543210",
-  "email": "rishita@gmail.com"
+  "email": "[rishita@gmail.com](mailto:rishita@gmail.com)"
 }
 
-
 ### Add Another Contact
+
 POST http://localhost:8080/contacts
 Content-Type: application/json
 
@@ -34,16 +34,11 @@ Content-Type: application/json
   "state": "Uttar Pradesh",
   "zip": "201301",
   "phoneNumber": "9123456780",
-  "email": "hardik@gmail.com"
+  "email": "[hardik@gmail.com](mailto:hardik@gmail.com)"
 }
 
-
-### Get Contact By ID
-GET http://localhost:8080/contacts/1
-Accept: application/json
-
-
 ### Update Contact
+
 PUT http://localhost:8080/contacts/1
 Content-Type: application/json
 
@@ -55,11 +50,50 @@ Content-Type: application/json
   "state": "Haryana",
   "zip": "122001",
   "phoneNumber": "9999999999",
-  "email": "rishita.sharma@gmail.com"
+  "email": "[rishita.sharma@gmail.com](mailto:rishita.sharma@gmail.com)"
 }
 
-
 ### Delete Contact
+
 DELETE http://localhost:8080/contacts/1
 Accept: application/json
-```
+
+### Search Contact By City (UC7)
+
+GET http://localhost:8080/contacts/city/Noida
+Accept: application/json
+
+### Search Contact By State (UC7)
+
+GET http://localhost:8080/contacts/state/Uttar Pradesh
+Accept: application/json
+
+### Count Contacts By City (UC9)
+
+GET http://localhost:8080/contacts/count/city/Noida
+Accept: application/json
+
+### Count Contacts By State (UC9)
+
+GET http://localhost:8080/contacts/count/state/Uttar Pradesh
+Accept: application/json
+
+### Sort Contacts By Name (UC10)
+
+GET http://localhost:8080/contacts/sort/name
+Accept: application/json
+
+### Sort Contacts By City (UC11)
+
+GET http://localhost:8080/contacts/sort/city
+Accept: application/json
+
+### Sort Contacts By State (UC11)
+
+GET http://localhost:8080/contacts/sort/state
+Accept: application/json
+
+### Sort Contacts By Zip (UC11)
+
+GET http://localhost:8080/contacts/sort/zip
+Accept: application/json
