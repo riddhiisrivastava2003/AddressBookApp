@@ -1,11 +1,47 @@
-### Get All Contacts
+### ==============================
+### AUTH APIs
+### ==============================
 
+### Register User
+POST http://localhost:8080/auth/register
+Content-Type: application/json
+
+{
+  "username": "riddhi2",
+  "email": "riddhi2@gmail.com",
+  "password": "1234"
+}
+
+### Login User
+POST http://localhost:8080/auth/login
+Content-Type: application/json
+
+{
+  "username": "riddhi2",
+  "password": "1234"
+}
+
+### Logout User
+POST http://localhost:8080/auth/logout
+Content-Type: application/json
+
+### ==============================
+### ADMIN APIs
+### ==============================
+
+### Admin Dashboard
+GET http://localhost:8080/admin/dashboard
+Accept: application/json
+
+### ==============================
+### CONTACT APIs
+### ==============================
+
+### Get All Contacts
 GET http://localhost:8080/contacts
 Accept: application/json
 
-
 ### Add New Contact
-
 POST http://localhost:8080/contacts
 Content-Type: application/json
 
@@ -20,9 +56,7 @@ Content-Type: application/json
   "email": "rishita@gmail.com"
 }
 
-
 ### Add Another Contact
-
 POST http://localhost:8080/contacts
 Content-Type: application/json
 
@@ -37,9 +71,7 @@ Content-Type: application/json
   "email": "hardik@gmail.com"
 }
 
-
 ### Update Contact
-
 PUT http://localhost:8080/contacts/1
 Content-Type: application/json
 
@@ -54,56 +86,38 @@ Content-Type: application/json
   "email": "rishita.sharma@gmail.com"
 }
 
-
 ### Delete Contact
-
 DELETE http://localhost:8080/contacts/1
 Accept: application/json
 
-
 ### Search Contact By City
-
 GET http://localhost:8080/contacts/city/Noida
 Accept: application/json
 
-
 ### Search Contact By State
-
 GET http://localhost:8080/contacts/state/Uttar%20Pradesh
 Accept: application/json
 
-
 ### Count Contacts By City
-
 GET http://localhost:8080/contacts/count/city/Noida
 Accept: application/json
 
-
 ### Count Contacts By State
-
 GET http://localhost:8080/contacts/count/state/Uttar%20Pradesh
 Accept: application/json
 
-
 ### Sort Contacts By Name
-
 GET http://localhost:8080/contacts/sort/name
 Accept: application/json
 
-
 ### Sort Contacts By City
-
 GET http://localhost:8080/contacts/sort/city
 Accept: application/json
 
-
 ### Sort Contacts By State
-
 GET http://localhost:8080/contacts/sort/state
 Accept: application/json
 
-
 ### Sort Contacts By Zip
-
 GET http://localhost:8080/contacts/sort/zip
 Accept: application/json

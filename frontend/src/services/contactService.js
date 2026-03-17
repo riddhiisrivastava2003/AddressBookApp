@@ -1,59 +1,33 @@
-// import axios from "axios";
+﻿import axios from "axios";
 
-// const API_URL = "http://localhost:8080/contacts";
+const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "";
 
-// export const addContact = (contact) => {
-//   return axios.post(API_URL, contact);
-// };
+// ------------------------
+// CONTACTS APIs
+// ------------------------
+const CONTACTS_URL = `${API_BASE_URL}/contacts`;
 
-// export const getContacts = () => {
-//   return axios.get(API_URL);
-// };
+export const getContacts = () => axios.get(CONTACTS_URL);
 
-// export const deleteContact = (id) => {
-//   return axios.delete(`${API_URL}/${id}`);
-// };
+export const deleteContact = (id) => axios.delete(`${CONTACTS_URL}/${id}`);
 
-// export const editContact = (id, data) => {
-//   return axios.put(`${API_URL}/${id}`, data);
-// };
+export const addContact = (contact) => axios.post(CONTACTS_URL, contact);
 
-// /* SORTING APIs */
+export const editContact = (id, data) => axios.put(`${CONTACTS_URL}/${id}`, data);
 
-// export const sortByName = () => {
-//   return axios.get(`${API_URL}/sort/name`);
-// };
+// SORTING APIs
+export const sortByName = () => axios.get(`${CONTACTS_URL}/sort/name`);
+export const sortByCity = () => axios.get(`${CONTACTS_URL}/sort/city`);
+export const sortByState = () => axios.get(`${CONTACTS_URL}/sort/state`);
+export const sortByZip = () => axios.get(`${CONTACTS_URL}/sort/zip`);
 
-// export const sortByCity = () => {
-//   return axios.get(`${API_URL}/sort/city`);
-// };
+// ------------------------
+// AUTH APIs
+// ------------------------
+const AUTH_URL = `${API_BASE_URL}/auth`;
 
-// export const sortByState = () => {
-//   return axios.get(`${API_URL}/sort/state`);
-// };
+export const registerUser = (user) => axios.post(`${AUTH_URL}/register`, user);
 
-// export const sortByZip = () => {
-//   return axios.get(`${API_URL}/sort/zip`);
-// };
+export const loginUser = (user) => axios.post(`${AUTH_URL}/login`, user);
 
-import axios from "axios";
-
-const API_URL = "http://localhost:8080/contacts";
-
-export const getContacts = () => axios.get(API_URL);
-
-export const deleteContact = (id) => axios.delete(`${API_URL}/${id}`);
-
-export const addContact = (contact) => axios.post(API_URL, contact);
-
-export const editContact = (id, data) => axios.put(`${API_URL}/${id}`, data);
-
-/* SORT APIs */
-
-export const sortByName = () => axios.get(`${API_URL}/sort/name`);
-
-export const sortByCity = () => axios.get(`${API_URL}/sort/city`);
-
-export const sortByState = () => axios.get(`${API_URL}/sort/state`);
-
-export const sortByZip = () => axios.get(`${API_URL}/sort/zip`);
+export const logoutUser = () => axios.post(`${AUTH_URL}/logout`);
