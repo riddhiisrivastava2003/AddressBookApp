@@ -2,7 +2,7 @@
 import { useNavigate } from "react-router-dom";
 import { loginUser, registerUser } from "../../services/contactService";
 
-const DEFAULT_ROLE = "user";
+const DEFAULT_ROLE = "USER";
 
 function normalizeUser(payload, responseData) {
   if (responseData) {
@@ -173,9 +173,9 @@ function AuthPage({ onAuthSuccess }) {
             <div className="field">
               <label>Role</label>
               <select name="role" value={activeForm.role} onChange={handleChange}>
-                <option value="user">User</option>
-                <option value="admin">Admin</option>
-              </select>
+  <option value="USER">User</option>
+  <option value="ADMIN">Admin</option>
+</select>
             </div>
 
             <div className="field">

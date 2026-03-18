@@ -1,4 +1,6 @@
-﻿import axios from "axios";
+﻿
+
+import axios from "axios";
 
 const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "";
 
@@ -7,27 +9,67 @@ const API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "";
 // ------------------------
 const CONTACTS_URL = `${API_BASE_URL}/contacts`;
 
-export const getContacts = () => axios.get(CONTACTS_URL);
+// ✅ Get Contacts (user wise / admin wise)
+export const getContacts = () => {
+  const username = localStorage.getItem("username");
 
-export const deleteContact = (id) => axios.delete(`${CONTACTS_URL}/${id}`);
+  if (username === "admin") {
+    return axios.get(`${CONTACTS_URL}/admin`);
+  }
 
-export const addContact = (contact) => axios.post(CONTACTS_URL, contact);
+  return axios.get(`${CONTACTS_URL}/${username}`);
+};
 
-export const editContact = (id, data) => axios.put(`${CONTACTS_URL}/${id}`, data);
+// ✅ Add Contact (FIXED)
+export const addContact = (contact) => {
+  const username = localStorage.getItem("username");
+  return axios.post(`${CONTACTS_URL}/${username}`, contact);
+};
 
+// ✅ Delete Contact
+export const deleteContact = (id) =>
+  axios.delete(`${CONTACTS_URL}/${id}`);
+
+// ✅ Edit Contact
+export const editContact = (id, data) =>
+  axios.put(`${CONTACTS_URL}/${id}`, data);
+
+// ------------------------
 // SORTING APIs
-export const sortByName = () => axios.get(`${CONTACTS_URL}/sort/name`);
-export const sortByCity = () => axios.get(`${CONTACTS_URL}/sort/city`);
-export const sortByState = () => axios.get(`${CONTACTS_URL}/sort/state`);
-export const sortByZip = () => axios.get(`${CONTACTS_URL}/sort/zip`);
+// ------------------------
+export const sortByName = () =>
+  axios.get(`${CONTACTS_URL}/sort/name`);
+
+export const sortByCity = () =>
+  axios.get(`${CONTACTS_URL}/sort/city`);
+
+export const sortByState = () =>
+  axios.get(`${CONTACTS_URL}/sort/state`);
+
+export const sortByZip = () =>
+  axios.get(`${CONTACTS_URL}/sort/zip`);
 
 // ------------------------
 // AUTH APIs
 // ------------------------
 const AUTH_URL = `${API_BASE_URL}/auth`;
 
-export const registerUser = (user) => axios.post(`${AUTH_URL}/register`, user);
+export const registerUser = (user) =>
+  axios.post(`${AUTH_URL}/register`, user);
 
-export const loginUser = (user) => axios.post(`${AUTH_URL}/login`, user);
+// ✅ LOGIN (IMPORTANT FIX)
+export const loginUser = async (user) => {
+  const response = await axios.post(`${AUTH_URL}/login`, user);
 
-export const logoutUser = () => axios.post(`${AUTH_URL}/logout`);
+  // 🔥 Save username in localStorage
+  localStorage.setItem("username", response.data.username);
+
+  return response;
+};
+
+export const logoutUser = () => {
+  localStorage.removeItem("username");
+  return axios.post(`${AUTH_URL}/logout`);
+};
+
+

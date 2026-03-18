@@ -7,9 +7,9 @@ POST http://localhost:8080/auth/register
 Content-Type: application/json
 
 {
-  "username": "riddhi2",
-  "email": "riddhi2@gmail.com",
-  "password": "1234"
+  "username": "rishi",
+  "email": "rishi2@gmail.com",
+  "password": "12345678"
 }
 
 ### Login User
@@ -17,8 +17,8 @@ POST http://localhost:8080/auth/login
 Content-Type: application/json
 
 {
-  "username": "riddhi2",
-  "password": "1234"
+  "username": "rishi",
+  "password": "12345678"
 }
 
 ### Logout User
@@ -26,49 +26,43 @@ POST http://localhost:8080/auth/logout
 Content-Type: application/json
 
 ### ==============================
-### ADMIN APIs
+### CONTACT APIs (username required)
 ### ==============================
 
-### Admin Dashboard
-GET http://localhost:8080/admin/dashboard
+### Get All Contacts (admin or user)
+GET http://localhost:8080/contacts/riddhi
 Accept: application/json
 
-### ==============================
-### CONTACT APIs
-### ==============================
-
-### Get All Contacts
-GET http://localhost:8080/contacts
-Accept: application/json
-
-### Add New Contact
-POST http://localhost:8080/contacts
+### Add New Contact (username=riddhi)
+POST http://localhost:8080/contacts/riddhi
 Content-Type: application/json
 
 {
-  "firstName": "Rishita",
-  "lastName": "Sharma",
+  "first_name": "Rishita",
+  "last_name": "Sharma",
   "address": "Street 15",
   "city": "Allahabad",
   "state": "Uttar Pradesh",
   "zip": "211006",
-  "phoneNumber": "9876543210",
-  "email": "rishita@gmail.com"
+  "phone": "9876543210",
+  "email": "rishita@gmail.com",
+  "date_added": "2026-03-17"
 }
 
-### Add Another Contact
-POST http://localhost:8080/contacts
+### Add Another Contact (username=riddhi)
+POST http://localhost:8080/contacts/riddhi
 Content-Type: application/json
 
 {
-  "firstName": "Hardik",
-  "lastName": "Verma",
+  "first_name": "Hardik",
+  "last_name": "Verma",
   "address": "Sector 10",
   "city": "Noida",
   "state": "Uttar Pradesh",
   "zip": "201301",
-  "phoneNumber": "9123456780",
-  "email": "hardik@gmail.com"
+  "phone": "9123456780",
+  "email": "hardik@gmail.com",
+  "date_added": "2026-03-17"
 }
 
 ### Update Contact
@@ -76,14 +70,15 @@ PUT http://localhost:8080/contacts/1
 Content-Type: application/json
 
 {
-  "firstName": "Rishita",
-  "lastName": "Sharma",
+  "first_name": "Rishita",
+  "last_name": "Sharma",
   "address": "Street 45",
   "city": "Gurgaon",
   "state": "Haryana",
   "zip": "122001",
-  "phoneNumber": "9999999999",
-  "email": "rishita.sharma@gmail.com"
+  "phone": "9999999999",
+  "email": "rishita.sharma@gmail.com",
+  "date_added": "2026-03-17"
 }
 
 ### Delete Contact
